@@ -1,5 +1,27 @@
+const buttons = document.querySelectorAll(".button");
+let playerSelection = "";
+
+buttons.forEach((button) => {
+    button.addEventListener("click", (e) => {
+        console.log(e.target.id);
+
+        if (e.target.id === "btnRock") {
+            console.log("Rock chosen by Player");
+            playerPlay("rock");                      
+            console.log(playerSelection);
+        } else if (e.target.id === "btnPaper") {
+            console.log("Paper chosen by Player");
+            playerPlay("paper");
+            console.log(playerSelection);
+        } else if (e.target.id === "btnScissors") {
+            console.log("Scissors chosen by Player");
+            playerPlay("scissors");
+            console.log(playerSelection);
+        }
+    });
+});
 function playerPlay(selection) {
-    let playerSelection = selection;
+    playerSelection = selection;
     return playerSelection;
     }
 
@@ -36,19 +58,3 @@ function playRound(playerSelection, computerSelection) {
         return "It's a tie!"
     }
 }
-
-const buttons = document.querySelectorAll(".button");
-
-buttons.forEach((button) => {
-    button.addEventListener("click", (e) => {
-        console.log(e.target.id);
-
-        if (e.target.id === "btnRock") {
-            console.log("Rock chosen by Player");
-            playerPlay("rock")                      // sends "rock" and runs playerPlay
-            console.log(playerSelection);
-        } else {
-            return;
-        }
-    });
-});
