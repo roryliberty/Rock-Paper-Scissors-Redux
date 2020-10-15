@@ -1,5 +1,13 @@
 const buttons = document.querySelectorAll(".button");
 let playerSelection = "";
+let round = 0;
+
+function roundCount() {
+    for (i = 0; i <= 3; i++) {
+        round++;
+        document.getElementById("round-number").innerHTML = round;
+    }
+}
 
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
@@ -18,12 +26,16 @@ buttons.forEach((button) => {
             playerPlay("scissors");
             console.log(playerSelection);
         }
+
+        roundCount();
+        console.log(round);
     });
 });
+
 function playerPlay(selection) {
     playerSelection = selection;
     return playerSelection;
-    }
+}
 
 function computerPlay() {
     let rps = Math.floor(Math.random() * 3);
