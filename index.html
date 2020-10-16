@@ -10,7 +10,7 @@
     <body>
         <main>
             <div id="instructions">
-                <h1>Make a choice and then click on Play!</h1>
+                <!--<h1>Make a choice and then click on Play!</h1>-->
             </div>
             <div id="button-container">
                 <button id="btnRock" class="button">Rock</button>
@@ -19,13 +19,19 @@
             </div>
 
             <div id="play-button-container">
-                <button id="btnPlay">Play!</button>
+                <!--<button id="btnPlay">Play!</button>-->
             </div>
 
             <div id="results-container">
-                <p>Round #<span id="round-number"></span></p>
-                <p>Player chose <span id="playerChoice"></span></p>
-                <p>Computer chose <span id="computerChoice"></span></p>
+                <div id="round-container">
+                    <p id="round">Round #<span id="round-number"></span></p>
+                </div>
+
+                <div id="choices-container">
+                    <p>Player chose: <span id="playerChoice"></span></p>
+                    <p>Computer chose: <span id="computerChoice"></span></p>
+                </div>
+                
                 <p>
                     <span id="result"></span>
                 </p>

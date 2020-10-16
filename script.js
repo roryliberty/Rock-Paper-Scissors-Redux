@@ -1,4 +1,5 @@
 const buttons = document.querySelectorAll(".button");
+const play = document.getElementById("btnPlay");
 let playerSelection = "";
 let computerSelection = "";
 let round = 0;
