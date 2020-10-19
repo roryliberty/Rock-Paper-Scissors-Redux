@@ -1,35 +1,41 @@
 const buttons = document.querySelectorAll(".button");
 const play = document.getElementById("btnPlay");
+const round = 0;
 let playerSelection = "";
 let computerSelection = "";
-let round = 0;
 
 document.getElementById("round-number").innerHTML = round;
 
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
         console.log(e.target.id);
-        
-        if (e.target.id === "btnRock") {
-            playerPlay("rock");
-            document.getElementById("playerChoice").innerHTML = playerSelection;
-            computerPlay();
-            document.getElementById("computerChoice").innerHTML = computerSelection;                    
-        } else if (e.target.id === "btnPaper") {
-            playerPlay("paper");
-            document.getElementById("playerChoice").innerHTML = playerSelection;
-            computerPlay();
-            document.getElementById("computerChoice").innerHTML = computerSelection;
-        } else if (e.target.id === "btnScissors") {
-            playerPlay("scissors");
-            document.getElementById("playerChoice").innerHTML = playerSelection;
-            computerPlay();
-            document.getElementById("computerChoice").innerHTML = computerSelection;
-        }
-        
-        playRound(playerSelection, computerSelection);
+
+        for (round; round <= 5; round++) {
+            startGame();
+        }    
     });
 });
+
+function startGame() {
+    if (e.target.id === "btnRock") {
+        playerPlay("rock");
+        document.getElementById("playerChoice").innerHTML = playerSelection;
+        computerPlay();
+        document.getElementById("computerChoice").innerHTML = computerSelection;                    
+    } else if (e.target.id === "btnPaper") {
+        playerPlay("paper");
+        document.getElementById("playerChoice").innerHTML = playerSelection;
+        computerPlay();
+        document.getElementById("computerChoice").innerHTML = computerSelection;
+    } else if (e.target.id === "btnScissors") {
+        playerPlay("scissors");
+        document.getElementById("playerChoice").innerHTML = playerSelection;
+        computerPlay();
+        document.getElementById("computerChoice").innerHTML = computerSelection;
+    }
+    
+    playRound(playerSelection, computerSelection);
+}
 
 function playerPlay(selection) {
     playerSelection = selection;
