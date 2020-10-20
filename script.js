@@ -1,45 +1,44 @@
 const buttons = document.querySelectorAll(".button");
-const play = document.getElementById("btnPlay");
-const round = 0;
 let playerSelection = "";
 let computerSelection = "";
-
-document.getElementById("round-number").innerHTML = round;
+let round = 1;
+let buttonPress;
+let playerScore = 0;
+let computerScore = 0;
 
 buttons.forEach((button) => {
     button.addEventListener("click", (e) => {
-        console.log(e.target.id);
+        buttonPress = (button.id);
 
-        for (round; round <= 5; round++) {
-            startGame();
-        }    
+        document.getElementById("round-number").innerHTML = round;
+        
+
+        console.log("buttonPress = " + buttonPress);
+        
+        getChoices(buttonPress);
+        round += 1;
+        playRound(playerSelection, computerSelection);        
     });
 });
 
-function startGame() {
-    if (e.target.id === "btnRock") {
-        playerPlay("rock");
+function getChoices(press) {
+    let theButton = press;
+    if (theButton === "btnRock") {
+        playerSelection = "rock";
         document.getElementById("playerChoice").innerHTML = playerSelection;
         computerPlay();
         document.getElementById("computerChoice").innerHTML = computerSelection;                    
-    } else if (e.target.id === "btnPaper") {
-        playerPlay("paper");
+    } else if (theButton === "btnPaper") {
+        playerSelection = "paper";
         document.getElementById("playerChoice").innerHTML = playerSelection;
         computerPlay();
         document.getElementById("computerChoice").innerHTML = computerSelection;
-    } else if (e.target.id === "btnScissors") {
-        playerPlay("scissors");
+    } else if (theButton === "btnScissors") {
+        playerSelection = "scissors";
         document.getElementById("playerChoice").innerHTML = playerSelection;
         computerPlay();
         document.getElementById("computerChoice").innerHTML = computerSelection;
     }
-    
-    playRound(playerSelection, computerSelection);
-}
-
-function playerPlay(selection) {
-    playerSelection = selection;
-    return playerSelection;
 }
 
 function computerPlay() {
@@ -53,36 +52,36 @@ function computerPlay() {
         computerSelection = "scissors";
     }
 }
-// maybe I can use case: instead of if/else loop 
+
 function playRound(playerSelection, computerSelection) {    
     if (playerSelection === "rock" && computerSelection === "rock") {
-        console.log("Tie: rock/rock");
         document.getElementById("result").innerHTML = "Tie: rock/rock";
     }else if (playerSelection === "rock" && computerSelection === "scissors") {
-        console.log("Win: rock/scissors");
         document.getElementById("result").innerHTML = "Win: rock/scissors";
+        playerScore += 1;
     }else if (playerSelection === "rock" && computerSelection === "paper") {
-        console.log("Lose: rock/paper");
-        document.getElementById("result").innerHTML = "Lose: rock/paper"
+        document.getElementById("result").innerHTML = "Lose: rock/paper";
+        computerScore +=1;
     }else if (playerSelection === "scissors" && computerSelection === "rock") {
-        console.log("Lose: scissors/rock");
-        document.getElementById("result").innerHTML = "Lose: scissors/rock"
+        document.getElementById("result").innerHTML = "Lose: scissors/rock";
+        computerScore += 1;
     }else if (playerSelection === "scissors" && computerSelection === "scissors") {
-        console.log("Tie: scissors/scissors");
         document.getElementById("result").innerHTML = "Tie: scissors/scissors"
     }else if (playerSelection === "scissors" && computerSelection === "paper") {
-        console.log("Win: scissors/paper");
-        document.getElementById("result").innerHTML = "Win: scissors/paper"
+        document.getElementById("result").innerHTML = "Win: scissors/paper";
+        playerScore += 1;
     }else if (playerSelection === "paper" && computerSelection === "rock") {
-        console.log("Win: paper/rock");
-        document.getElementById("result").innerHTML = "Win: paper/rock"
+        document.getElementById("result").innerHTML = "Win: paper/rock";
+        playerScore += 1;
     }else if (playerSelection === "paper" && computerSelection === "scissors") {
-        console.log("Lose: paper/scissors");
-        document.getElementById("result").innerHTML = "Lose: paper/scissors"
+        document.getElementById("result").innerHTML = "Lose: paper/scissors";
+        computerScore += 1;
     }else if (playerSelection === "paper" && computerSelection === "paper") {
-        console.log("Tie: paper/paper");
-        document.getElementById("result").innerHTML = "Tie: paper/paper"
+        document.getElementById("result").innerHTML = "Tie: paper/paper";
     }else {
         return;
     }
+
+    document.getElementById("totals").innerHTML = ("Total goes here: " + playerScore +
+            " - " + computerScore);
 }
