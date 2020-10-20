@@ -17,7 +17,14 @@ buttons.forEach((button) => {
         
         getChoices(buttonPress);
         round += 1;
-        playRound(playerSelection, computerSelection);        
+        playRound(playerSelection, computerSelection);
+        if (playerScore === 5 && computerScore < 5) {
+            document.getElementById("totals").innerHTML = ("YOU WIN! score: " + playerScore +
+                " - " + computerScore);
+        }   else if (computerScore === 5 && playerScore < 5) {
+            document.getElementById("totals").innerHTML = ("YOU LOSE! score: " + playerScore +
+                " - " + computerScore);
+        }
     });
 });
 
