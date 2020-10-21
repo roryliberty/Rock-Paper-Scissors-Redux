@@ -12,7 +12,6 @@ buttons.forEach((button) => {
 
         document.getElementById("round-number").innerHTML = round;
         
-
         console.log("buttonPress = " + buttonPress);
         
         getChoices(buttonPress);
