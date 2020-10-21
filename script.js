@@ -55,34 +55,43 @@ function computerPlay() {
     }
 }
 
-function playRound(playerSelection, computerSelection) {    
-    if (playerSelection === "rock" && computerSelection === "rock") {
-        document.getElementById("result").innerHTML = "Tie: rock/rock";
-    }       else if (playerSelection === "rock" && computerSelection === "scissors") {
-                document.getElementById("result").innerHTML = "Win: rock/scissors";
-                playerScore += 1;
-            }   else if (playerSelection === "rock" && computerSelection === "paper") {
-                    document.getElementById("result").innerHTML = "Lose: rock/paper";
-                    computerScore +=1;
-                }   else if (playerSelection === "scissors" && computerSelection === "rock") {
-                        document.getElementById("result").innerHTML = "Lose: scissors/rock";
-                        computerScore += 1;
-                    }   else if (playerSelection === "scissors" && computerSelection === "scissors") {
-                            document.getElementById("result").innerHTML = "Tie: scissors/scissors"
-                        }   else if (playerSelection === "scissors" && computerSelection === "paper") {
-                                document.getElementById("result").innerHTML = "Win: scissors/paper";
-                                playerScore += 1;
-                            }   else if (playerSelection === "paper" && computerSelection === "rock") {
-                                    document.getElementById("result").innerHTML = "Win: paper/rock";
-                                    playerScore += 1;
-                                }   else if (playerSelection === "paper" && computerSelection === "scissors") {
-                                        document.getElementById("result").innerHTML = "Lose: paper/scissors";
-                                        computerScore += 1;
-                                    }   else if (playerSelection === "paper" && computerSelection === "paper") {
-                                            document.getElementById("result").innerHTML = "Tie: paper/paper";
-                                        }   else {
-                                                return;
-                                            }
+function playRound(playerSelection, computerSelection) {
+    let result = whoWon(playerSelection, computerSelection);
 
+    if (result === "Win") {
+        playerScore++;
+    } else if (result === "Lose") {
+        computerScore++;
+    }
+
+    document.getElementById("result").innerText = result + ": " + playerSelection + " / " + computerSelection;
     document.getElementById("totals").innerHTML = ("Total goes here: " + playerScore + " - " + computerScore);
+}
+
+function whoWon(player, computer) {
+    if (player === "rock") {
+        if (computer === "rock") {
+            return "Tie";
+        }   else if (computer === "paper") {
+            return "Lose";
+        }   else {
+            return "Win";
+        }
+    }   else if (player === "paper") {
+        if (computer === "rock") {
+            return "Lose";
+        }   else if (computer === "paper") {
+            return "Tie";
+        }   else {
+            return "Win";
+        }
+    }   else {
+        if (computer === "rock") {
+            return "Lose";
+        }   else if (computer === "paper") {
+            return "Win";
+        }   else {
+            return "Tie";
+        }
+    }
 }
